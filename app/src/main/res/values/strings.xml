@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">GeoQuiz</string>
+
+    <string name="btn_false">False</string>
+    <string name="btn_true">True</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_back">Back</string>
+    <string name="result_toast">Correct percentage: </string>
+
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Incorrect!</string>
+
+    <string name="question1">Was the Eiffel Tower criticized by artists and writers when it was built?</string>
+    <string name="question2">Has the Roman Colosseum been used as a stage for theatrical performances?</string>
+    <string name="question3">Does the Great Wall of China have sections built with rice as part of the material?</string>
+    <string name="question4">Was Machu Picchu unknown to Spanish conquistadors?</string>
+    <string name="question5"> Was the Statue of Liberty originally intended for Egypt?</string>
+    <string name="question6">Does the Taj Mahal change color according to the phases of the moon?</string>
+    <string name="question7">Has the Acropolis of Athens suffered significant damage due to pollution?</string>
+    <string name="question8">Has the Christ the Redeemer in Rio de Janeiro been struck by lightning several times?</string>
+    <string name="question9">Was the Palace of Versailles used as a seat of government during the French Revolution?</string>
+    <string name="question10">Does the Statue of Unity in India have an observation gallery inside?</string>
+
+</resources>
