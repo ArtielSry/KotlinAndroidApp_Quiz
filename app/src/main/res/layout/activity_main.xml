@@ -76,11 +76,11 @@
             android:id="@+id/trueBtn"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
             android:backgroundTint="@color/white"
             android:padding="10dp"
             android:text="@string/btn_true"
-            android:textColor="@color/black"
-            android:layout_marginEnd="20dp"/>
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/falseBtn"
@@ -90,6 +90,21 @@
             android:padding="10dp"
             android:text="@string/btn_false"
             android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="50dp">
+
+        <Button
+            android:id="@+id/cheatBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cheat"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/red"/>
     </LinearLayout>
 
 

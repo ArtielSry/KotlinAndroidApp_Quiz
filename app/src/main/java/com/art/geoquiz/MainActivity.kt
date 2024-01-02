@@ -1,5 +1,7 @@
 package com.art.geoquiz
 
+import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -38,8 +40,16 @@ class MainActivity : AppCompatActivity() {
         // pone la pregunta
         val questionTextResId = quizViewModel.currentQuestionText
         binding.questionTv.setText(questionTextResId)
-
         binding.questionPositionTv.text = (quizViewModel.currentIndex + 1).toString()
+
+        binding.cheatBtn.setOnClickListener {
+
+            binding.trueBtn.setBackgroundColor(Color.GREEN)
+
+           /* val answerIsTrue = quizViewModel.currentQuestionAnswer
+            val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
+            startActivity(intent) */
+        }
 
     }
 
@@ -61,15 +71,12 @@ class MainActivity : AppCompatActivity() {
     // check if you are right
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswers = quizViewModel.currentQuestionAnswer
-
         if (quizViewModel.currentIndex == quizViewModel.questionBank.size - 1) {
             val percentage =
                 (quizViewModel.correctAnswers.toFloat() / quizViewModel.questionBank.size) * 100
             val intPercentage = percentage.toInt().toString()
-
             resetQuiz(intPercentage, quizViewModel.correctAnswers)
         }
-
     }
 
     private fun alertDialog(percentage: String, answer: Int) {
@@ -86,13 +93,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun resetQuiz(percentage: String, correctAnswers: Int) {
-
         quizViewModel.correctAnswers = 0
-
         updateQuestion()
-
         alertDialog(percentage, correctAnswers)
-
     }
 
 

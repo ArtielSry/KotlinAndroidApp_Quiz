@@ -23,7 +23,6 @@ class QuizViewModel : ViewModel() {
 
     var correctAnswers: Int = 0
     var currentIndex: Int = 0
-    var actualIndex: Int = 1
 
     val currentQuestionAnswer: Boolean
         get() = questionBank[currentIndex].answer

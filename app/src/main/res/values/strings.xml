@@ -10,6 +10,8 @@
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
 
+    <string name="cheat">Cheat...</string>
+
     <string name="question1">Was the Eiffel Tower criticized by artists and writers when it was built?</string>
     <string name="question2">Has the Roman Colosseum been used as a stage for theatrical performances?</string>
     <string name="question3">Does the Great Wall of China have sections built with rice as part of the material?</string>
