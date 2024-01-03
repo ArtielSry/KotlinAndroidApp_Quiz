@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.art.geoquiz.databinding.ActivityMainBinding
@@ -16,11 +17,15 @@ class MainActivity : AppCompatActivity() {
 
     private val quizViewModel: QuizViewModel by viewModels()
 
+    private val cheatLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         initUI()
     }
 
@@ -42,15 +47,13 @@ class MainActivity : AppCompatActivity() {
         binding.questionTv.setText(questionTextResId)
         binding.questionPositionTv.text = (quizViewModel.currentIndex + 1).toString()
 
+        // boton cheat
         binding.cheatBtn.setOnClickListener {
-
-            binding.trueBtn.setBackgroundColor(Color.GREEN)
-
-           /* val answerIsTrue = quizViewModel.currentQuestionAnswer
+            val answerIsTrue = quizViewModel.currentQuestionAnswer
             val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
-            startActivity(intent) */
+            cheatLauncher.launch(intent)
         }
-
+        updateQuestion()
     }
 
     // funcion para cambiar a la siguiente pregunta

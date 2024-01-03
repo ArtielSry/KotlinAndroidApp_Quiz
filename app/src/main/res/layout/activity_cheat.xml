@@ -3,22 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".CheatActivity">
 
     <TextView
+        android:id="@+id/atv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="prueba" />
+        android:text="@string/sureQuestion" />
 
     <TextView
+        android:id="@+id/answer_text_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="prueba" />
+        android:layout_height="wrap_content" />
 
-    <TextView
+    <Button
+        android:id="@+id/show_answer_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="prueba" />
+        android:layout_marginTop="10dp"
+        android:text="@string/showAnswer" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

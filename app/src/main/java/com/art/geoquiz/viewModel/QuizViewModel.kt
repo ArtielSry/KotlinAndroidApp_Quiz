@@ -1,11 +1,14 @@
 package com.art.geoquiz.viewModel
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.createSavedStateHandle
 import com.art.geoquiz.R
 import com.art.geoquiz.model.QuizModel
 
-class QuizViewModel : ViewModel() {
+const val IS_CHEATER_KEY = "IS_CHEATER_KEY"
+
+class QuizViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
 
     val questionBank = listOf(
         QuizModel(R.string.question1, true, R.drawable.ic_prueba),
@@ -20,6 +23,9 @@ class QuizViewModel : ViewModel() {
         QuizModel(R.string.question10, true, R.drawable.ic_prueba),
     )
 
+    var isCheater: Boolean
+        get() = savedStateHandle[IS_CHEATER_KEY] ?: false
+        set(value) = savedStateHandle.set(IS_CHEATER_KEY, value)
 
     var correctAnswers: Int = 0
     var currentIndex: Int = 0
@@ -33,5 +39,4 @@ class QuizViewModel : ViewModel() {
     fun moveToNext() {
         currentIndex = (currentIndex + 1) % questionBank.size
     }
-
 }
