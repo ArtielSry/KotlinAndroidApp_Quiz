@@ -2,7 +2,6 @@ package com.art.geoquiz.viewModel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.createSavedStateHandle
 import com.art.geoquiz.R
 import com.art.geoquiz.model.QuizModel
 
@@ -10,7 +9,7 @@ const val IS_CHEATER_KEY = "IS_CHEATER_KEY"
 
 class QuizViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
 
-    val questionBank = listOf(
+    private val questionBank = listOf(
         QuizModel(R.string.question1, true, R.drawable.ic_prueba),
         QuizModel(R.string.question2, true, R.drawable.ic_prueba),
         QuizModel(R.string.question3, false, R.drawable.ic_prueba),

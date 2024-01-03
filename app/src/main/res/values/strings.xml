@@ -15,6 +15,8 @@
     <string name="sureQuestion">Are you sure?</string>
     <string name="showAnswer">Show answer</string>
 
+    <string name="judgment">You are a cheater</string>
+
     <string name="question1">Was the Eiffel Tower criticized by artists and writers when it was built?</string>
     <string name="question2">Has the Roman Colosseum been used as a stage for theatrical performances?</string>
     <string name="question3">Does the Great Wall of China have sections built with rice as part of the material?</string>

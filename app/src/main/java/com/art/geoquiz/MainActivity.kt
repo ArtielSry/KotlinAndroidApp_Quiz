@@ -1,9 +1,11 @@
 package com.art.geoquiz
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -20,6 +22,10 @@ class MainActivity : AppCompatActivity() {
     private val cheatLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            quizViewModel.isCheater =
+                result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             cheatLauncher.launch(intent)
         }
         updateQuestion()
+
     }
 
     // funcion para cambiar a la siguiente pregunta
@@ -73,33 +80,23 @@ class MainActivity : AppCompatActivity() {
 
     // check if you are right
     private fun checkAnswer(userAnswer: Boolean) {
-        val correctAnswers = quizViewModel.currentQuestionAnswer
-        if (quizViewModel.currentIndex == quizViewModel.questionBank.size - 1) {
-            val percentage =
-                (quizViewModel.correctAnswers.toFloat() / quizViewModel.questionBank.size) * 100
-            val intPercentage = percentage.toInt().toString()
-            resetQuiz(intPercentage, quizViewModel.correctAnswers)
+        val correctAnswer: Boolean = quizViewModel.currentQuestionAnswer
+
+        val messageResId = when {
+            quizViewModel.isCheater -> R.string.judgment
+            userAnswer == correctAnswer -> R.string.correct_toast
+            else -> R.string.incorrect_toast
         }
+        val message = getString(messageResId)
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
-    private fun alertDialog(percentage: String, answer: Int) {
-        val builder = AlertDialog.Builder(this)
-
-        if (answer > 5) {
-            builder.setTitle("Congrats!")
-        } else {
-            builder.setTitle("Maybe next time!")
-        }
-        builder.setMessage("YOU ANSWERED ${percentage}% RIGHT")
-        val dialog = builder.create()
-        dialog.show()
-    }
-
-    private fun resetQuiz(percentage: String, correctAnswers: Int) {
-        quizViewModel.correctAnswers = 0
-        updateQuestion()
-        alertDialog(percentage, correctAnswers)
-    }
-
-
 }
+
+
+/*
+private fun resetQuiz(percentage: String, correctAnswers: Int) {
+    quizViewModel.correctAnswers = 0
+    updateQuestion()
+    alertDialog(percentage, correctAnswers)
+}
+*/
